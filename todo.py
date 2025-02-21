@@ -51,6 +51,16 @@ def complete_task(task_number):
     else:
         print("Invalid task number.")
 
+def delete_task(task_number):
+    """Deletes a task."""
+    tasks = load_tasks()
+    if 1 <= task_number <= len(tasks):
+        deleted_task = tasks.pop(task_number - 1)
+        save_tasks(tasks)
+        print(f"Task '{deleted_task['description']}' deleted.")
+    else:
+        print("Invalid task number.")
+
 def main():
     """Main function to handle command line arguments."""
     parser = argparse.ArgumentParser(description="Command line TODO list app.")
