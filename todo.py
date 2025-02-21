@@ -41,6 +41,16 @@ def list_tasks():
         status = "[x]" if task["completed"] else "[ ]"
         print(f"{i+1}. {status} {task['description']}")
 
+def complete_task(task_number):
+    """Marks a task as complete."""
+    tasks = load_tasks()
+    if 1 <= task_number <= len(tasks):
+       tasks[task_number-1]["completed"] = True
+       save_tasks(tasks)
+       print(f"Task {task_number} completed.")
+    else:
+        print("Invalid task number.")
+
 def main():
     """Main function to handle command line arguments."""
     parser = argparse.ArgumentParser(description="Command line TODO list app.")
