@@ -23,6 +23,13 @@ def save_tasks(tasks):
     with open(data_file, "w") as f:
         json.dump(tasks, f, indent=4)
 
+def add_task(description):
+    """Adds a new task."""
+    tasks = load_tasks()
+    tasks.append({"description": description, "completed": False})
+    save_tasks(tasks)
+    print(f"Task added: {description}")
+
 def main():
     """Main function to handle command line arguments."""
     parser = argparse.ArgumentParser(description="Command line TODO list app.")
