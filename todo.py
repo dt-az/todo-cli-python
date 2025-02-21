@@ -1,4 +1,12 @@
 import argparse
+import json
+import os
+import sys
+
+def get_data_file():
+    """Gets the path to the data file, relative to the script's location."""
+    script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))  # Directory of the script
+    return os.path.join(script_dir, "todo_list.json")  # File in the same directory
 
 def main():
     """Main function to handle command line arguments."""
