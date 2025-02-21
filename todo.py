@@ -17,6 +17,12 @@ def load_tasks():
     except FileNotFoundError:
         return []
 
+def save_tasks(tasks):
+    """Saves tasks to the data file."""
+    data_file = get_data_file() # Get the file path
+    with open(data_file, "w") as f:
+        json.dump(tasks, f, indent=4)
+
 def main():
     """Main function to handle command line arguments."""
     parser = argparse.ArgumentParser(description="Command line TODO list app.")
