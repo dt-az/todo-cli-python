@@ -30,6 +30,17 @@ def add_task(description):
     save_tasks(tasks)
     print(f"Task added: {description}")
 
+def list_tasks():
+    """Lists all tasks."""
+    tasks = load_tasks()
+    if not tasks:
+        print("No tasks found.")
+        return
+
+    for i, task in enumerate(tasks):
+        status = "[x]" if task["completed"] else "[ ]"
+        print(f"{i+1}. {status} {task['description']}")
+
 def main():
     """Main function to handle command line arguments."""
     parser = argparse.ArgumentParser(description="Command line TODO list app.")
