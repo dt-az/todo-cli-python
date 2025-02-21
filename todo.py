@@ -8,6 +8,15 @@ def get_data_file():
     script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))  # Directory of the script
     return os.path.join(script_dir, "todo_list.json")  # File in the same directory
 
+def load_tasks():
+    """Loads tasks from the data file."""
+    data_file = get_data_file()  # Get the file path
+    try:
+        with open(data_file, "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return []
+
 def main():
     """Main function to handle command line arguments."""
     parser = argparse.ArgumentParser(description="Command line TODO list app.")
