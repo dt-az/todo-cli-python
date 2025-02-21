@@ -23,7 +23,20 @@ def main():
     #Subparser for clearing all tasks
     clear_parser = subparsers.add_parser("clear", help="Clear all tasks")
 
-    parser.print_help()
+    args = parser.parse_args()
+
+    if args.command == "add":
+        add_task(args.description)
+    elif args.command == "list":
+        list_tasks()
+    elif args.command == "complete":
+        complete_task(args.task_number)
+    elif args.command == "delete":
+        delete_task(args.task_number)
+    elif args.command == "clear":
+        clear_tasks()
+    else:
+        parser.print_help()
 
 if __name__ == "__main__":
     main()
